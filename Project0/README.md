@@ -1,3 +1,3 @@
-Project 0:  Warm-Up
+# Project 0:  Warm-Up
 
-Specification is described in pdf file.
+  Specification is described in "Project 0.pdf".
