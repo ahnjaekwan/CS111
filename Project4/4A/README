@@ -1,0 +1,22 @@
+NAME: Jaekwan Ahn
+EMAIL: ahnjk0513@gmail.com
+ID: 604057669
+
+
+(NO SLIP DAY)
+
+
+The tarball lab4a-604057669.tar.gz includes selfie.jpeg, ifconfig.png, copy.png, execution.png, gitclone.png, and README.
+    selfie.jpeg: a selfie of you holding your assembled Edison (showing the chip)
+    ifconfig.png: a screen shot from a USB terminal command session in connected to your system, gave it a name and configured network access
+    copy.png: a screen shot from a local session in which you copy a hello world program from your laptop/desktop to your Edison
+    execution.png: a screen shot from a WIFI SSH session in which you build and run a trivial program
+    gitclone.png: a screen shot from a WIFI SSH session in which you install git and clone a reposoitory
+    README: this file
+
+
+The serial number: FZEDA542D00SC5501
+WiFi MAC: 02:00:86:9c:89:30
+MAC address of my Edison: 90:b6:86:05:00:fe
+
+Basically, I just followed PROJECT DESCRIPTION step by step.
