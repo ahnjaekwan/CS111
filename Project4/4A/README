@@ -1,12 +1,4 @@
-NAME: Jaekwan Ahn
-EMAIL: ahnjk0513@gmail.com
-ID: 604057669
-
-
-(NO SLIP DAY)
-
-
-The tarball lab4a-604057669.tar.gz includes selfie.jpeg, ifconfig.png, copy.png, execution.png, gitclone.png, and README.
+This project includes selfie.jpeg, ifconfig.png, copy.png, execution.png, gitclone.png, and README.
     selfie.jpeg: a selfie of you holding your assembled Edison (showing the chip)
     ifconfig.png: a screen shot from a USB terminal command session in connected to your system, gave it a name and configured network access
     copy.png: a screen shot from a local session in which you copy a hello world program from your laptop/desktop to your Edison
