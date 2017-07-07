@@ -1,0 +1,30 @@
+NAME: Aaron Van Doren, Jaekwan Ahn
+EMAIL: vandoren96@gmail.com, ahnjk0513@gmail.com
+ID: 504635123, 604057669
+
+Includes:
+	lab3b.py - main source file of this Project 3b
+	lab3b - executable shell script
+	Makefile - A file to build and run the deliverable program:
+		default : give execute permission for script lab3b
+		dist : create the deliverable tarball
+		clean : delete created lab3a and tarball
+	README - this file with short descriptions of each included files and references
+
+REFERENCES:
+	Piazza
+	Discussion Slides / Notes
+	Python:
+		python: http://www.cogsci.rpi.edu/~destem/igd/python_cheat_sheet.pdf
+		https://docs.python.org/2/contents.html
+	Double Array:
+		https://stackoverflow.com/questions/2397141/how-to-initialize-a-two-dimensional-array-in-python
+	CSV file read:
+		https://docs.python.org/2/library/csv.html
+	Append list:
+		https://www.tutorialspoint.com/python/list_append.htm
+	Dictionary:
+		https://stackoverflow.com/questions/5230874/what-is-the-difference-between-and-in-python
+	Key in dictionary:
+		https://www.tutorialspoint.com/python/dictionary_has_key.htm
+
