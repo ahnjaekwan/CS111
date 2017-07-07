@@ -1,9 +1,3 @@
-/*
-NAME: Jaekwan Ahn
-EMAIL: ahnjk0513@gmail.com
-ID: 604057669
-*/
-
 #include "SortedList.h"
 #include <pthread.h>
 #include <stdio.h>
