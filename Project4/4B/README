@@ -1,0 +1,45 @@
+NAME: Jaekwan Ahn
+EMAIL: ahnjk0513@gmail.com
+ID: 604057669
+
+1 Slip Day
+
+The tarball lab4B-604057669.tar.gz includes:
+    lab4b.c: main source file
+    	(commented inside source file to describe it)
+    Makefile: default(build), check, clean, dist
+    	(to build, check test cases, clean and dist tarball)
+    testscript.sh: script for "make check" - checks some test cases
+    README: this file
+
+
+references:
+	time:
+	http://man7.org/linux/man-pages/man3/strftime.3.html
+
+	localtime synchronization:
+	https://communities.intel.com/thread/56294
+
+	poll:
+	http://man7.org/linux/man-pages/man2/poll.2.html
+
+	open:
+	https://linux.die.net/man/2/open
+
+	algorithm:
+	http://wiki.seeed.cc/Grove-Temperature_Sensor_V1.2/
+
+	decimal point:
+	http://stackoverflow.com/questions/2486410/extra-leading-zeros-when-printing-float-using-printf
+
+	write logfile:
+	https://linux.die.net/man/3/dprintf
+
+	strcmp:
+	https://linux.die.net/man/3/strcmp
+
+	exit vim:
+	https://stackoverflow.com/questions/11828270/how-to-exit-the-vim-editor
+
+
+
