@@ -1,9 +1,3 @@
-/*
-NAME: JAEKWAN AHN
-EMAIL: ahnjk0513@gmail.com
-ID: 604057669
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
