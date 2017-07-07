@@ -1,9 +1,4 @@
-
-NAME: Jaekwan Ahn
-EMAIL: ahnjk0513@gmail.com
-ID: 604057669
-
-The tarball lab2B-604057669.tar.gz includes:
+This project includes:
     lab2_list.c: main source file
     SortedList.h: given header file
     SortedList.c: C module that implements 4 functions in header file above
