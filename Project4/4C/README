@@ -1,0 +1,12 @@
+NAME: Jaekwan Ahn
+EMAIL: ahnjk0513@gmail.com
+ID: 604057669
+
+The tarball lab4c-604057669.tar.gz includes:
+    lab4c_tcp_tls.c: main source file
+    	(commented inside source file to describe it)
+    Makefile: default(build), clean, dist
+    	(to build, clean and dist tarball)
+    README: this file
+
+Thank you.
