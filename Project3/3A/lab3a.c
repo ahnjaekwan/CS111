@@ -1,9 +1,3 @@
-/*
-NAME: Jaekwan Ahn, Aaron Van Doren
-EMAIL: ahnjk0513@gmail.com, vandoren96@gmail.com
-ID: 604057669, 504635123
-*/
-
 #include <linux/types.h>
 #include <stdint.h>
 #include <sys/types.h>
