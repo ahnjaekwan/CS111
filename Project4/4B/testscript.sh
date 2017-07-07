@@ -1,8 +1,4 @@
 #!/bin/bash
-#NAME: Jaekwan Ahn
-#EMAIL: ahnjk0513@gmail.com
-#ID: 604057669
-#!/bin/bash
 
 echo 'Unrecognizable argument:'
 ./lab4b --unrecog &> /dev/null
