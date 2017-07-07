@@ -1,9 +1,3 @@
-/*
-NAME: Jaekwan Ahn
-EMAIL: ahnjk0513@gmail.com
-ID: 604057669
-*/
-
 #include <termios.h>
 #include <unistd.h>
 #include <signal.h>
