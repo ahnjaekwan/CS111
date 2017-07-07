@@ -1,0 +1,24 @@
+NAME: Jaekwan Ahn
+EMAIL: ahnjk0513@gmail.com
+ID: 604057669
+
+(TWO SLIP DAY)
+
+
+
+
+The tarball lab1b-604057669.tar.gz includes lab1a.c, Makefile, and README.
+    lab1b-server.c: main source code of the program.
+    lab1b-client.c: main source code of the program.
+    Makefile: build the lab1b executable, delete all makefile-created files to return the directory to its just installed state, and build the distribution tarball.
+    README: this file which describes overall lab.
+    my.key: encryption file
+
+
+References:
+        CS111 LAB 1A
+	CS111 LAB 1B - SLIDES
+        Piazza for CS111
+	https://linux.die.net/man/3/mcrypt
+	http://www.cs.rpi.edu/~moorthy/Courses/os98/Pgms/socket.html
+
