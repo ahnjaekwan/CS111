@@ -1,0 +1,188 @@
+Total: 1223 samples
+     933  76.3%  76.3%      933  76.3% sync_lock
+     231  18.9%  95.2%      231  18.9% __strcmp_sse42
+      29   2.4%  97.5%      149  12.2% SortedList_insert
+      24   2.0%  99.5%      138  11.3% SortedList_lookup
+       3   0.2%  99.8%        3   0.2% _init
+       2   0.2%  99.9%        2   0.2% 0x00007ffd0195b8bd
+       1   0.1% 100.0%        1   0.1% 0x00007ffd0195b986
+       0   0.0% 100.0%        3   0.2% __clock_gettime
+       0   0.0% 100.0%     1223 100.0% __clone
+       0   0.0% 100.0%     1223 100.0% execute
+       0   0.0% 100.0%     1223 100.0% start_thread
+ROUTINE ====================== execute in /u/cs/ugrad/jaekwan/cs111/lab2b/jaekwan/lab2_list.c
+     0   1223 Total samples (flat / cumulative)
+     .      .  118:     	fprintf(stderr, "ERROR in wrong sync option\n");
+     .      .  119:     	exit(1);
+     .      .  120:   	}
+     .      .  121: }
+     .      .  122: 
+---
+     .      .  123: void* execute(void *thread_index1) { //execution function for each thread
+     .      .  124:   	//starts with a set of pre-allocated and initialized elements
+     .      .  125:   	int thread_index = *((int *) thread_index1);
+     .      .  126:   	struct timespec waitstart, waitend;
+     .      .  127:   	int index, hashnum;
+     .      .  128:   	long waittime;
+     .      .  129:   
+     .      .  130:   	//inserts them all into a list
+     .      .  131:   	for(index = 0; index < num_iterations; index++) {
+     .      .  132:   		hashnum = hash_function(Elements[thread_index][index].key);
+     .      .  133:   		if(opt_sync > 0){
+     .      .  134: 		  	clock_gettime(CLOCK_MONOTONIC, &waitstart);
+     .    449  135: 		    sync_lock(hashnum);
+     .      1  136: 		    clock_gettime(CLOCK_MONOTONIC, &waitend);
+     .      .  137: 		    waittime = (waitend.tv_sec - waitstart.tv_sec) * 1000000000L + (waitend.tv_nsec - waitstart.tv_nsec);
+     .      .  138: 		    total_waittime += waittime;
+     .      .  139: 		}
+     .    149  140:     	SortedList_insert(&SList[hashnum], &Elements[thread_index][index]);
+     .      .  141:     	if(opt_sync > 0)
+     .      .  142:     		sync_unlock(hashnum);
+     .      .  143:   	}
+     .      .  144:   
+     .      .  145:   	//gets the list length
+     .      .  146:   	int listlength = 0;
+     .      .  147:   	int singlelength;
+     .      .  148:   	if(opt_sync > 0){
+     .      .  149:   		for(index = 0; index < num_lists; index++){
+     .      .  150: 		  	clock_gettime(CLOCK_MONOTONIC, &waitstart);
+     .      1  151: 		  	sync_lock(index);
+     .      .  152: 		    clock_gettime(CLOCK_MONOTONIC, &waitend);
+     .      .  153: 		    waittime = (waitend.tv_sec - waitstart.tv_sec) * 1000000000L + (waitend.tv_nsec - waitstart.tv_nsec);
+     .      .  154: 		 	total_waittime += waittime;
+     .      .  155: 		}
+     .      .  156:   	}
+     .      .  157: 	for(index = 0; index < num_lists; index++){
+     .      .  158: 		singlelength = SortedList_length(&SList[index]);
+     .      .  159: 	  	if(singlelength == -1){
+     .      .  160: 	    	fprintf(stderr, "ERROR in length of list: list is corrupted1\n");
+     .      .  161: 	  		exit(2);
+     .      .  162: 	 	}
+     .      .  163: 	 	listlength += singlelength;
+     .      .  164: 	}
+     .      .  165: 	if(opt_sync > 0) {
+     .      .  166: 	  	for(index = 0; index < num_lists; index++){
+     .      .  167: 	  		sync_unlock(index);
+     .      .  168: 	  	}
+     .      .  169: 		}
+     .      .  170: 
+     .      .  171:   	//looks up and deletes each of the keys it had previously inserted
+     .      .  172:   	SortedListElement_t *deleted;
+     .      .  173:   	for(index = 0; index < num_iterations; index++) {
+     .      .  174:     	hashnum = hash_function(Elements[thread_index][index].key);
+     .      .  175:   		if(opt_sync > 0) {
+     .      2  176: 		  	clock_gettime(CLOCK_MONOTONIC, &waitstart);
+     .    483  177: 		  	sync_lock(hashnum);
+     .      .  178: 		    clock_gettime(CLOCK_MONOTONIC, &waitend);
+     .      .  179: 		    waittime = (waitend.tv_sec - waitstart.tv_sec) * 1000000000L + (waitend.tv_nsec - waitstart.tv_nsec);
+     .      .  180: 		    total_waittime += waittime;
+     .      .  181:     	}
+     .    138  182:     	deleted = SortedList_lookup(&SList[hashnum], Elements[thread_index][index].key);
+     .      .  183:     	if(deleted == NULL){
+     .      .  184:     		fprintf(stderr, "ERROR in SortedList_lookup()\n");
+     .      .  185:   			exit(1);
+     .      .  186:     	}
+     .      .  187:     	if(SortedList_delete(deleted) == 1){
+     .      .  188:     		fprintf(stderr, "ERROR in SortedList_delete()\n");
+     .      .  189:   			exit(1);
+     .      .  190:     	}
+     .      .  191:     	if(opt_sync > 0)
+     .      .  192:     		sync_unlock(hashnum);
+     .      .  193:   	}
+     .      .  194: 
+     .      .  195:   	//exits to re-join the parent thread
+     .      .  196:   	pthread_exit(NULL);
+---
+     .      .  197:   	return NULL;
+     .      .  198: }
+     .      .  199: 
+     .      .  200: int main(int argc, char *argv[])
+     .      .  201: {
+ROUTINE ====================== execute in /u/cs/ugrad/jaekwan/cs111/lab2b/jaekwan/lab2_list.c
+     0   1223 Total samples (flat / cumulative)
+     .      .  118:     	fprintf(stderr, "ERROR in wrong sync option\n");
+     .      .  119:     	exit(1);
+     .      .  120:   	}
+     .      .  121: }
+     .      .  122: 
+---
+     .      .  123: void* execute(void *thread_index1) { //execution function for each thread
+     .      .  124:   	//starts with a set of pre-allocated and initialized elements
+     .      .  125:   	int thread_index = *((int *) thread_index1);
+     .      .  126:   	struct timespec waitstart, waitend;
+     .      .  127:   	int index, hashnum;
+     .      .  128:   	long waittime;
+     .      .  129:   
+     .      .  130:   	//inserts them all into a list
+     .      .  131:   	for(index = 0; index < num_iterations; index++) {
+     .      .  132:   		hashnum = hash_function(Elements[thread_index][index].key);
+     .      .  133:   		if(opt_sync > 0){
+     .      .  134: 		  	clock_gettime(CLOCK_MONOTONIC, &waitstart);
+     .    449  135: 		    sync_lock(hashnum);
+     .      1  136: 		    clock_gettime(CLOCK_MONOTONIC, &waitend);
+     .      .  137: 		    waittime = (waitend.tv_sec - waitstart.tv_sec) * 1000000000L + (waitend.tv_nsec - waitstart.tv_nsec);
+     .      .  138: 		    total_waittime += waittime;
+     .      .  139: 		}
+     .    149  140:     	SortedList_insert(&SList[hashnum], &Elements[thread_index][index]);
+     .      .  141:     	if(opt_sync > 0)
+     .      .  142:     		sync_unlock(hashnum);
+     .      .  143:   	}
+     .      .  144:   
+     .      .  145:   	//gets the list length
+     .      .  146:   	int listlength = 0;
+     .      .  147:   	int singlelength;
+     .      .  148:   	if(opt_sync > 0){
+     .      .  149:   		for(index = 0; index < num_lists; index++){
+     .      .  150: 		  	clock_gettime(CLOCK_MONOTONIC, &waitstart);
+     .      1  151: 		  	sync_lock(index);
+     .      .  152: 		    clock_gettime(CLOCK_MONOTONIC, &waitend);
+     .      .  153: 		    waittime = (waitend.tv_sec - waitstart.tv_sec) * 1000000000L + (waitend.tv_nsec - waitstart.tv_nsec);
+     .      .  154: 		 	total_waittime += waittime;
+     .      .  155: 		}
+     .      .  156:   	}
+     .      .  157: 	for(index = 0; index < num_lists; index++){
+     .      .  158: 		singlelength = SortedList_length(&SList[index]);
+     .      .  159: 	  	if(singlelength == -1){
+     .      .  160: 	    	fprintf(stderr, "ERROR in length of list: list is corrupted1\n");
+     .      .  161: 	  		exit(2);
+     .      .  162: 	 	}
+     .      .  163: 	 	listlength += singlelength;
+     .      .  164: 	}
+     .      .  165: 	if(opt_sync > 0) {
+     .      .  166: 	  	for(index = 0; index < num_lists; index++){
+     .      .  167: 	  		sync_unlock(index);
+     .      .  168: 	  	}
+     .      .  169: 		}
+     .      .  170: 
+     .      .  171:   	//looks up and deletes each of the keys it had previously inserted
+     .      .  172:   	SortedListElement_t *deleted;
+     .      .  173:   	for(index = 0; index < num_iterations; index++) {
+     .      .  174:     	hashnum = hash_function(Elements[thread_index][index].key);
+     .      .  175:   		if(opt_sync > 0) {
+     .      2  176: 		  	clock_gettime(CLOCK_MONOTONIC, &waitstart);
+     .    483  177: 		  	sync_lock(hashnum);
+     .      .  178: 		    clock_gettime(CLOCK_MONOTONIC, &waitend);
+     .      .  179: 		    waittime = (waitend.tv_sec - waitstart.tv_sec) * 1000000000L + (waitend.tv_nsec - waitstart.tv_nsec);
+     .      .  180: 		    total_waittime += waittime;
+     .      .  181:     	}
+     .    138  182:     	deleted = SortedList_lookup(&SList[hashnum], Elements[thread_index][index].key);
+     .      .  183:     	if(deleted == NULL){
+     .      .  184:     		fprintf(stderr, "ERROR in SortedList_lookup()\n");
+     .      .  185:   			exit(1);
+     .      .  186:     	}
+     .      .  187:     	if(SortedList_delete(deleted) == 1){
+     .      .  188:     		fprintf(stderr, "ERROR in SortedList_delete()\n");
+     .      .  189:   			exit(1);
+     .      .  190:     	}
+     .      .  191:     	if(opt_sync > 0)
+     .      .  192:     		sync_unlock(hashnum);
+     .      .  193:   	}
+     .      .  194: 
+     .      .  195:   	//exits to re-join the parent thread
+     .      .  196:   	pthread_exit(NULL);
+---
+     .      .  197:   	return NULL;
+     .      .  198: }
+     .      .  199: 
+     .      .  200: int main(int argc, char *argv[])
+     .      .  201: {
