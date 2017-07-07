@@ -1,13 +1,4 @@
-NAME: Jaekwan Ahn
-EMAIL: ahnjk0513@gmail.com
-ID: 604057669
-
-(NO SLIP DAY)
-
-
-
-
-The tarball lab0-604057669.tar.gz includes lab0.c, Makefile, backtrace.png, breakpoint.png, and README.
+The tarball includes lab0.c, Makefile, backtrace.png, breakpoint.png, and README.
     lab0.c: main source code of the program.
     Makefile: build the lab0 executable, runs a quick smoke-test on whether or not the program seems to work, delete all makefile-created files to return the directory to its just installed state, and build the distribution tarball.
     backtrace.png: a screenshot of showing a segfault and associated stack-trace.
@@ -30,13 +21,6 @@ Thus, overall it checks whether 'lab0' exits with correct exit code in different
       2 ... unable to open input file
       3 ... unable to open output file
       4 ... caught and received SIGSEGV
-
-
-
-
-General impression: I think this lab0 is doable but still it took much more time to finish than what I guessed before I had started.
-
-
 
 
 References:
