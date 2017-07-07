@@ -1,9 +1,3 @@
-/*
-NAME: Jaekwan Ahn
-EMAIL: ahnjk0513@gmail.com
-ID: 604057669
-*/
-
 #include <pthread.h>
 #include <stdio.h>
 #include <getopt.h>
