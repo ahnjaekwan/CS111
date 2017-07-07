@@ -1,0 +1,42 @@
+NAME: Jaekwan Ahn
+EMAIL: ahnjk0513@gmail.com
+ID: 604057669
+
+The tarball lab2a-604057669.tar.gz includes:
+    lab2_add.c: main source file for part a
+    lab2_list.c: main source file for part b
+    SortedList.h: given header file
+    SortedList.c: C module that implements 4 functions in header file above
+    Makefile: build, tests, graphs, dist, and clean
+    lab2_add.csv: containing all of the results for all of the part a
+    lab2_list.csv: containing all of the results for all of the part b
+    graphs: lab2_add-(1~5) and lab2_list-(1~4) which are created by using gnuplot on csv files
+    README: this file
+
+
+
+Q 2.1.1:
+  # Why does it take many iterations before errors are seen?
+      As the number of iterations increases, the critical section grows larger which means this increases the probability of error as well.
+  # Why does a significantly smaller number of iterations so seldom fail?
+      With small number of iterations, it seldom fails since most computations are executed in order and are coalesced by processor.
+
+Q 2,1,2:
+  # Why are the --yield runs so much slower?
+      Because pthread_yield relinquishes the CPU whenver it is called and thus thread will be placed at the bottom of the queue. Thus current thread will be halted and some other thread will might take this place instead.
+  # Where is the additional time going?
+      The additional time is going to other thread and thus the time for the completion of that thread will be increasing.
+  # Is it possible to get valid per-peration timings if we are using the --yield option?
+      Yes, it is possible to get valid per-operation timings if we are using the --yield option.
+
+Q 2.1.3:
+  # Why does the average cost per operation drop with increasing iterations?
+      Becuase the cost of scheduling thread is fixed and adding additional iterations to alreadly shceduled thread has low cost. Thus when multiple iterations which are placed together, it becomes more efficient.
+  # If the cost per iteration is a function of the number of iterations, how do we know how many iterations to run?
+      Since we have a function of the number of iterations, we can figure out by measuring the time spent in the critical section. We did measure in this project by using gettime function.
+
+Q 2.1.4:
+  # Why do all of the options perform similarly for low numbers of threads?
+    Because with low numbers of threads, there will be no bottleneck. Thus CPU is then able to handle the load the number of threads.
+  # Why do the three protected operations slow down as the number of threas rises?
+    The three protected operations slow down as the number of threads rises because the waiting time per thread increases as well and then it produces bottleneck.
