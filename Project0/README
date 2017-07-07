@@ -1,4 +1,4 @@
-The tarball includes lab0.c, Makefile, backtrace.png, breakpoint.png, and README.
+This project includes lab0.c, Makefile, backtrace.png, breakpoint.png, and README.
     lab0.c: main source code of the program.
     Makefile: build the lab0 executable, runs a quick smoke-test on whether or not the program seems to work, delete all makefile-created files to return the directory to its just installed state, and build the distribution tarball.
     backtrace.png: a screenshot of showing a segfault and associated stack-trace.
