@@ -1,8 +1,4 @@
-NAME: Jaekwan Ahn, Aaron Van Doren
-EMAIL: ahnjk0513@gmail.com, vandoren96@gmail.com
-ID: 604057669, 504635123
-
-includes:
+This project includes:
 	lab3a.c - main source file of this Project 3a
 	Makefile - A file to build and run the deliverable program:
 		default : run build
@@ -13,24 +9,23 @@ includes:
 
 
 References:
+	octal:
+	http://codingstreet.com/how-to-represent-octal-and-hex-number-in-c/
 
-octal:
-http://codingstreet.com/how-to-represent-octal-and-hex-number-in-c/
+	gdb breakpoint:
+	https://stackoverflow.com/questions/5276988/how-to-set-break-point-on-one-file-of-a-project-which-has-many-files-with-same-n
 
-gdb breakpoint:
-https://stackoverflow.com/questions/5276988/how-to-set-break-point-on-one-file-of-a-project-which-has-many-files-with-same-n
+	pread:
+	http://man7.org/linux/man-pages/man2/pread.2.html
 
-pread:
-http://man7.org/linux/man-pages/man2/pread.2.html
+	Bad address error:
+	https://stackoverflow.com/questions/10666789/error-bad-address-when-reading-from-message-queue-on-linux
 
-Bad address error:
-https://stackoverflow.com/questions/10666789/error-bad-address-when-reading-from-message-queue-on-linux
+	time:
+	https://linux.die.net/man/2/time
 
-time:
-https://linux.die.net/man/2/time
+	printf(%o):
+	http://www.cplusplus.com/reference/cstdio/printf/
 
-printf(%o):
-http://www.cplusplus.com/reference/cstdio/printf/
-
-ceil:
-https://linux.die.net/man/3/ceil
+	ceil:
+	https://linux.die.net/man/3/ceil
