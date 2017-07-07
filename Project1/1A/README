@@ -1,23 +1,7 @@
-NAME: Jaekwan Ahn
-EMAIL: ahnjk0513@gmail.com
-ID: 604057669
-
-(THREE SLIP DAY)
-
-
-
-
-The tarball lab0-604057669.tar.gz includes lab1a.c, Makefile, and README.
+This project includes lab1a.c, Makefile, and README.
     lab1a.c: main source code of the program.
     Makefile: build the lab1a executable, delete all makefile-created files to return the directory to its just installed state, and build the distribution tarball.
     README: this file which describes overall lab.
-
-
-
-General impression: I started this lab late and am also stuck on shell part for a long time. 
-
-
-
 
 References:
         CS111 LAB 1A
