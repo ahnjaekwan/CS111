@@ -1,0 +1,48 @@
+NAME: Jaekwan Ahn
+EMAIL: ahnjk0513@gmail.com
+ID: 604057669
+
+(NO SLIP DAY)
+
+
+
+
+The tarball lab0-604057669.tar.gz includes lab0.c, Makefile, backtrace.png, breakpoint.png, and README.
+    lab0.c: main source code of the program.
+    Makefile: build the lab0 executable, runs a quick smoke-test on whether or not the program seems to work, delete all makefile-created files to return the directory to its just installed state, and build the distribution tarball.
+    backtrace.png: a screenshot of showing a segfault and associated stack-trace.
+    breakpoint.png: a screenshot of showing a breakpoint and variable inspection.
+    README: this file which describes overall lab.
+
+
+
+In Makefile, there are smoke-test cases in the check target.
+There are 8 smoke-test cases in total:
+      4 of them is checking if lab0 functions properly with appropriate arguments given.
+      1 of them is checking if lab0 exits correctly with exit code of 1 when unrecognized arguments are given.
+      1 of them is checking if lab0 exits correctly with exit code of 2 when unable to open input file.
+      1 of them is checking if lab0 exits correctly with exit code of 2 when unable to open input file.
+      1 of them is checking if lab0 exits correctly with exit code of 2 when caught and received SIGSEGV.
+
+Thus, overall it checks whether 'lab0' exits with correct exit code in different cases. The correct exit codes are given below:
+      0 ... copy successful
+      1 ... unrecognized argument
+      2 ... unable to open input file
+      3 ... unable to open output file
+      4 ... caught and received SIGSEGV
+
+
+
+
+General impression: I think this lab0 is doable but still it took much more time to finish than what I guessed before I had started.
+
+
+
+
+References:
+	CS111 LAB 1A
+	Piazza for CS111
+	https://en.wikipedia.org/wiki/Segmentation_fault
+	http://unix.stackexchange.com/questions/70963/difference-between-2-2-dev-null-dev-null-and-dev-null-21
+	https://www.gsp.com/cgi-bin/man.cgi?section=3&topic=getopt_long
+	http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
