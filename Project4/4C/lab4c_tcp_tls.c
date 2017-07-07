@@ -1,9 +1,3 @@
-/*
-NAME: Jaekwan Ahn
-EMAIL: ahnjk0513@gmail.com
-ID: 604057669
-*/
-
 #define _GNU_SOURCE
 
 #include <stdio.h>
