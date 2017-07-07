@@ -1,7 +1,3 @@
-#NAME: Aaron Van Doren, Jaekwan Ahn
-#EMAIL: vandoren96@gmail.com, ahnjk0513@gmail.com
-#ID: 504635123, 604057669
-
 .SILENT:
 
 ARCHIVE = lab3b-604057669.tar.gz
