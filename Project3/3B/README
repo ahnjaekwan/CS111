@@ -1,8 +1,4 @@
-NAME: Aaron Van Doren, Jaekwan Ahn
-EMAIL: vandoren96@gmail.com, ahnjk0513@gmail.com
-ID: 504635123, 604057669
-
-Includes:
+This project includes:
 	lab3b.py - main source file of this Project 3b
 	lab3b - executable shell script
 	Makefile - A file to build and run the deliverable program:
